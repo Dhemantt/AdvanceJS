@@ -1,59 +1,68 @@
-// let obj = {
-//     'key1': 'value1',
-//     'key2': 'value2',
-//     'key3': 'value3',
-//     'key4': 'value4'
-// }
-// // console.log(Object.values(obj));
-// var arrofKey = Object.keys(obj);
+// this.table = 'window table';
 
-// Object.keys(obj).forEach((key) => {
-//     console.log(obj[key]);
-// });
-
-// let obj = {
-//     num: 2,
+// const cleantable = function(){
+//     console.log(`${this.table} cleaning`);
 // }
 
-// let functionname = function (a, b, c) {
-//     return this.num + a + b + c;
+// this.garage = {
+//     table : 'garage table'
 // }
 
-// //call
-// console.log(functionname.call(obj, 1, 2, 3));
-
-// //apply
-// console.log(functionname.apply(obj, [1, 2, 3]));
-
-// //bind
-// let bind = functionname.bind(obj)
-// console.log(bind(2,2,2));
-
-// let student = {
-//     age:20
-// }
-// let functionname = function () {
-//     return  this.age
-// }
-// let bind = functionname.bind(student);
-// console.log(bind());
-
-// let multiply = function (x, y) {
-//     return x * y;
+// let john = {
+//     table: 'johns table'
 // }
 
-// let multiplybyTwo = multiply.bind(this, 2);
-// console.log(multiplybyTwo(3));
+// cleantable.call(this);
+// cleantable.call(this.garage);
+// cleantable.call(john);
 
-// let multiplybyThree = multiply.bind(this, 3);
-// console.log(multiplybyThree(10));
+// class student{
+//     static count = 0
+//     constructor(name,age,phone,marks){
+//         student.count++
+//         this.age = age;
+//         this.name=name
+//         this.phone=phone
+//         this.marks = marks
+//     }
+    
+//     check(){
+//     return this.marks > 40 ? 'eligible': 'not eligible';
+//     }
+// }
+// let std1 = new student('user1',20,1234,30);
+// let std2 = new student('user1',20,1234,40);
+// let std3 = new student('user1',20,1234,50);
+// let std4 = new student('user1',20,1234,60);
+// let std5 = new student('user1',20,1234,20);
+// console.log(std1.check(), student.count);
+// console.log(std2.check());
+// console.log(std3.check());
 
-// with closure
 
-let multiply = function (x) {
-    return function (y) {
-        return (x * y);
-    }
+//fat Arrow fn
+
+class student{
+        static count = 0
+        constructor(name,age,phone,marks){
+            student.count++
+            this.age = age;
+            this.name=name
+            this.phone=phone
+            this.marks = marks
+        }
+        
+        check(minage){
+            return (minmarks) => {
+                if (this.marks > minmarks && this.age > minage) {
+                console.log(this.name +" is eligible")
+                }
+                else {
+                    console.log(this.name +" is not eligible")
+                }
+        }
+        }
 }
-let multiplybyThree = multiply(3);
-console.log(multiplybyThree(10));
+    
+let std1 = new student('user1', 20, 1234, 30);
+std1.check(18)(40);
